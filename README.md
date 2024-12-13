@@ -6,7 +6,7 @@
   </a>
   <h2 align="center">QuickWrench React</h2>
   <p align="center">
-    Frontend interface for the QuickWrench web application 🎨
+    Frontend for the QuickWrench web application 🎨
     <p align="center">
       <a href="https://techforpalestine.org/learn-more"><img alt="StandWithPalestine" src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg"></a>
       <img alt="GitHub License" src="https://img.shields.io/github/license/quickwrench/quickwrench-frontend">
