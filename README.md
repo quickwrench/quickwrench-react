@@ -1,7 +1,7 @@
 <a id="readme-top"></a>
 
 <div align="center">
-  <a href="https://github.com/quickwrench/quichwrench-frontend">
+  <a href="https://github.com/quickwrench/quickwrench-frontend">
     <img src="assets/logo.png" alt="Logo" height="150">
   </a>
   <h2 align="center">QuickWrench React</h2>
@@ -9,16 +9,16 @@
     Frontend interface for the QuickWrench web application 🎨
     <p align="center">
       <a href="https://techforpalestine.org/learn-more"><img alt="StandWithPalestine" src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg"></a>
-      <img alt="GitHub License" src="https://img.shields.io/github/license/quickwrench/quichwrench-frontend">
-      <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/quickwrench/quichwrench-frontend/release.yml">
-      <img alt="GitHub Tag" src="https://img.shields.io/github/v/tag/quickwrench/quichwrench-frontend">
-      <img alt="GitHub issues" src="https://img.shields.io/github/issues/quickwrench/quichwrench-frontend">
+      <img alt="GitHub License" src="https://img.shields.io/github/license/quickwrench/quickwrench-frontend">
+      <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/quickwrench/quickwrench-frontend/release.yml">
+      <img alt="GitHub Tag" src="https://img.shields.io/github/v/tag/quickwrench/quickwrench-frontend">
+      <img alt="GitHub issues" src="https://img.shields.io/github/issues/quickwrench/quickwrench-frontend">
     </p>
     <a href="#getting-started">Getting Started</a>
     ·
-    <a href="https://github.com/quickwrench/quichwrench-frontend/issues">Report Bug</a>
+    <a href="https://github.com/quickwrench/quickwrench-frontend/issues">Report Bug</a>
     ·
-    <a href="https://github.com/quickwrench/quichwrench-frontend/issues">Request Feature</a>
+    <a href="https://github.com/quickwrench/quickwrench-frontend/issues">Request Feature</a>
 
   </p>
 </div>
@@ -60,13 +60,13 @@ sudo apt install docker.io
 1. Clone the repo
 
 ```sh
-git clone https://github.com/quickwrench/quichwrench-frontend.git
+git clone https://github.com/quickwrench/quickwrench-frontend.git
 ```
 
 2. Navigate to the project directory
 
 ```sh
-cd quichwrench-frontend
+cd quickwrench-frontend
 ```
 
 3. Install dependencies
