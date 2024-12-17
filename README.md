@@ -2,7 +2,7 @@
 
 <div align="center">
   <a href="https://github.com/quickwrench/quickwrench-frontend">
-    <img src="assets/logo.png" alt="Logo" height="150">
+    <img src="src/assets/logo.png" alt="Logo" height="150">
   </a>
   <h2 align="center">QuickWrench React</h2>
   <p align="center">
