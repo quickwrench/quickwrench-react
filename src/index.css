@@ -5,10 +5,13 @@
   font-weight: 400;
   --dark: #012169;
   --light: #0079C1;
+  --figma-light:#264ECA;
+  --figma-dark:#2148C0;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: var(--dark);
+
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
