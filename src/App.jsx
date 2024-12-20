@@ -1,16 +1,20 @@
-import "./Logo.jsx"
+import "./Logo.jsx";
 import "./App.css";
-import Logo from "./Logo.jsx";
-import Login_form from "./login_form.jsx";
+import "./LoginPage.jsx";
+import LoginPage from "./LoginPage.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-
-
   return (
-    <>
-      <Logo/>
-      <Login_form/>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route
+          path="/register"
+          element={<h1 style={{ color: "green" }}>Tito</h1>}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
