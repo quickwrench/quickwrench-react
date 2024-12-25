@@ -10,8 +10,8 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route
-          path="/register"
-          element={<h1 style={{ color: "green" }}>Tito</h1>}
+          path="/profile"
+          element={<h1 style={{ color: "green" }}>profile page</h1>}
         />
       </Routes>
     </BrowserRouter>
