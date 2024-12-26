@@ -69,6 +69,8 @@ jobs:
           containerfiles: docker/Dockerfile
           image: ${{ env.IMAGE_NAME }}
           tags: ${{ env.VERSION }} latest
+          build-args: |
+            BACKEND_URL=${{ env.BACKEND_URL }}
 
       - id: login
         name: Login to registry

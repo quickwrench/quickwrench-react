@@ -1,5 +1,7 @@
 FROM node:alpine AS build
 
+ARG BACKEND_URL
+
 RUN mkdir -p /usr/local/app/src /usr/local/app/public
 
 WORKDIR /usr/local/app
@@ -8,11 +10,14 @@ COPY package.json package-lock.json ./
 
 RUN npm ci
 
-COPY index.html vite.config.js ./
-COPY src/ ./src
-COPY public ./public
+COPY .env index.html vite.config.js ./
 
-RUN npm run build
+COPY src/ ./src
+
+RUN if [ -n "${BACKEND_URL}" ]; then \
+  echo "VITE_BACKEND_URL=${BACKEND_URL}" > .env.production; \
+  fi && \
+  npm run build
 
 FROM nginx:alpine AS runtime
 

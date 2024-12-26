@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+
+input {
+  height: 45px;
+  width: 300px;
+  color: white;
+  background-color: transparent;
+  margin-bottom: 20px;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding-left: 20px;
+}
+
+::placeholder {
+  color: white;
+  /* padding-left: 10px; */
+  opacity: 100%;
+  font-size: 14px;
+}
+button {
+  background-color: white;
+  color: #2148c0;
+  width: 300px;
+}
+
+.button {
+  background-color: white;
+  color: #2148c0;
+  width: 300px;
+}
