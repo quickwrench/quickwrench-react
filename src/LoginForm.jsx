@@ -71,8 +71,12 @@ export default function Login_form() {
                 setPassInput(event.target.value);
               }}
             />
-
-            <input type="submit" className="button" to="/profile" />
+            <input
+              type="submit"
+              className="button"
+              to="/profile"
+              value="Login"
+            />
           </form>
           <div style={{ marginTop: "10px" }}>
             <span>don`t have an account? </span>
