@@ -1,0 +1,21 @@
+.panal {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.mylogo {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.image {
+  width: 100%;
+  height: 75%;
+}
+
+.image:hover {
+  filter: drop-shadow(0 0 2em #323cfaaa);
+}
