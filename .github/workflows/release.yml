@@ -7,6 +7,7 @@ concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: true
 env:
+  BACKEND_URL: ${{ vars.BACKEND_URL }}
   REGISTRY: ghcr.io/${{ github.repository_owner }}
   REGISTRY_USER: ${{ github.actor }}
   REGISTRY_PASS: ${{ github.token }}
