@@ -4,6 +4,7 @@ import { useState } from "react";
 import ErrorMessage from "./ErrorMessage.jsx";
 import "./loginBtn.css";
 export default function Login_form() {
+  // create states for the two input fields
   const [emailInput, setemailInput] = useState("");
   const [passInput, setPassInput] = useState("");
   const [error, setError] = useState(null);
@@ -80,7 +81,7 @@ export default function Login_form() {
           </form>
           <div style={{ marginTop: "10px" }}>
             <span>don`t have an account? </span>
-            <a href=""> sign up</a>
+            <a href="/userReg"> sign up</a>
           </div>
         </div>
       </div>
