@@ -41,8 +41,9 @@ export default function UserReg() {
           flexDirection: "column",
           height: "100%",
           width: "100%",
-          justifySelf: "center",
-          alignSelf: "center",
+          // justifySelf: "center",
+          // alignSelf: "center",
+          justifyContent: "space-evenly",
         }}
       >
         <form
@@ -56,6 +57,8 @@ export default function UserReg() {
           action="post"
         >
           <ErrorMessage message={error} />
+          <input type="text" placeholder="FIRST_NAME" />
+          <input type="text" placeholder="LAST_NAME" />
           <input
             type="text"
             placeholder="EMAIL"
@@ -65,13 +68,17 @@ export default function UserReg() {
             }}
           />
           <input
-            type="password"
-            placeholder="PASSWORD"
+            type="text"
+            placeholder="USERNAME"
             value={passInput}
             onChange={(event) => {
               setPassInput(event.target.value);
             }}
           />
+
+          <input type="text" placeholder="PHONENUMBER" />
+          <input type="text" placeholder="PASSWORD" />
+          <input type="text" placeholder="CONFIRMPASSWORD" />
 
           <input type="submit" className="button" to="/profile" />
         </form>
