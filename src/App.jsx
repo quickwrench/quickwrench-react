@@ -15,6 +15,7 @@ function App() {
           element={<h1 style={{ color: "white" }}>profile page</h1>}
         />
         <Route path="/register" element={<UserReg />} />
+        <Route path="/workshop" element={<UserReg />} />
       </Routes>
     </BrowserRouter>
   );

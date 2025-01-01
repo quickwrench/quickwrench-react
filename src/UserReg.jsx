@@ -101,7 +101,7 @@ export default function UserReg() {
         <form
           onSubmit={handleReg}
           style={{
-            height: "85%",
+            height: "60%",
             width: "650px",
             display: "flex",
             flexDirection: "row",
@@ -202,6 +202,7 @@ export default function UserReg() {
           <div
             style={{
               width: "100%", // Take full width to use justify-content
+              height: "50px",
               display: "flex",
               justifyContent: "center",
               marginTop: "20px", // Add spacing above if needed
@@ -209,19 +210,23 @@ export default function UserReg() {
           >
             <input
               type="submit"
+              value="Register"
               className="button"
               to="/profile"
               style={{
                 justifySelf: "center",
                 padding: "10px 20px",
                 borderRadius: "5px",
+                fontWeight: "bold",
+                fontSize: "20px",
+                width: "620px",
               }}
             />
           </div>
         </form>
         <ErrorMessage message={error} />
-        <div style={{ marginTop: "10px" }}>
-          <span>already have an account? </span>
+        <div>
+          <span>Already have an account? </span>
           <Link to="/">Login</Link>
         </div>
       </div>

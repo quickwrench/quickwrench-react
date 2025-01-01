@@ -78,10 +78,11 @@ export default function Login_form() {
               className="button"
               to="/profile"
               value="Login"
+              style={{ fontSize: "20px", fontWeight: "bold" }}
             />
           </form>
           <div style={{ marginTop: "10px" }}>
-            <span>don`t have an account? </span>
+            <span>Don`t have an account? </span>
             <Link to="/register">Sign Up</Link>
           </div>
         </div>
