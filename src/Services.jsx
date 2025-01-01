@@ -35,14 +35,14 @@ export default function Services({ service, onChange }) {
           borderColor: "white",
         }}
       >
-        <option value="">SELECT Service TYPE</option>
-        <option>Engine & Performance</option>
-        <option>Tires & Wheels</option>
-        <option>Brakes & Suspension</option>
-        <option>Battery & Electrical</option>
-        <option>Transmission & Drivetrain</option>
-        <option>Exterior & Bodywork</option>
-        <option>Interior & Comfort</option>
+        <option value="">Select Service Type</option>
+        <option className="op">Engine & Performance</option>
+        <option className="op">Tires & Wheels</option>
+        <option className="op">Brakes & Suspension</option>
+        <option className="op">Battery & Electrical</option>
+        <option className="op">Transmission & Drivetrain</option>
+        <option className="op">Exterior & Bodywork</option>
+        <option className="op">Interior & Comfort</option>
       </select>
     </div>
   );

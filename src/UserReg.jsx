@@ -110,7 +110,7 @@ export default function UserReg() {
         >
           <input
             type="text"
-            placeholder="FIRST NAME"
+            placeholder="First Name"
             value={formInputs.first_name}
             onChange={(event) => {
               // const newFormInput = {...formInputs}; //shallow copy, spread syntax
@@ -121,7 +121,7 @@ export default function UserReg() {
           />
           <input
             type="text"
-            placeholder="LAST NAME"
+            placeholder="Last Name"
             value={formInputs.last_name}
             onChange={(event) => {
               setFormInput({ ...formInputs, last_name: event.target.value });
@@ -129,7 +129,7 @@ export default function UserReg() {
           />
           <input
             type="email"
-            placeholder="EMAIL"
+            placeholder="Email"
             value={formInputs.email}
             onChange={(event) => {
               setFormInput({ ...formInputs, email: event.target.value });
@@ -137,7 +137,7 @@ export default function UserReg() {
           />
           <input
             type="text"
-            placeholder="USERNAME"
+            placeholder="Username"
             value={formInputs.username}
             onChange={(event) => {
               setFormInput({ ...formInputs, username: event.target.value });
@@ -146,7 +146,7 @@ export default function UserReg() {
 
           <input
             type="text"
-            placeholder="PHONE NUMBER"
+            placeholder="Phone Number"
             pattern="\+20[0-9]*"
             title="Phone number must start with +20"
             value={formInputs.phone_numbe}
@@ -169,11 +169,11 @@ export default function UserReg() {
               height: "45px",
               borderRadius: "5px",
               borderColor: "white",
-              placeholder: "CAR TYPE",
+              placeholder: "Car Type",
             }}
           >
             <option value="" className={"op"}>
-              SELECT CAR TYPE
+              Select Car Type
             </option>
             <option className={"op"}>Toyota</option>
             <option className={"op"}>Honda</option>
@@ -183,7 +183,7 @@ export default function UserReg() {
           </select>
           <input
             type="password"
-            placeholder="PASSWORD"
+            placeholder="Password"
             value={formInputs.password}
             onChange={(event) => {
               setFormInput({ ...formInputs, password: event.target.value });
@@ -191,7 +191,7 @@ export default function UserReg() {
           />
           <input
             type="password"
-            placeholder="CONFIRM PASSWORD"
+            placeholder="Confirm Password"
             value={formInputs.confirm_pass}
             onChange={(event) => {
               setFormInput({ ...formInputs, confirm_pass: event.target.value });
