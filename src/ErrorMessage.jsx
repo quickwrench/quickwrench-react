@@ -3,7 +3,25 @@ import PropTypes from "prop-types";
 
 // Define the ErrorMessage component
 export default function ErrorMessage({ message }) {
-  if (!message) return null; // Don't render anything if no message is provided
+  if (!message) return;
+  if (message == "s")
+    return (
+      <p
+        style={{
+          color: "#5cb85c", // Example color scheme for error (redish tone)
+          fontSize: "0.9em",
+          backgroundColor: "white",
+          border: "1px solid #5cb85c",
+          borderRadius: "4px",
+          padding: "8px 12px",
+          marginBottom: "10px",
+          width: "300px",
+          fontWeight: "bold",
+        }}
+      >
+        successful registration
+      </p>
+    );
 
   return (
     <p

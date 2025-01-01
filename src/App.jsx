@@ -12,9 +12,9 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route
           path="/profile"
-          element={<h1 style={{ color: "green" }}>profile page</h1>}
+          element={<h1 style={{ color: "white" }}>profile page</h1>}
         />
-        <Route path="/userReg" element={<UserReg />} />
+        <Route path="/register" element={<UserReg />} />
       </Routes>
     </BrowserRouter>
   );
