@@ -269,7 +269,9 @@ export default function WorkShop() {
               }}
             />
           </div>
-          <div>
+          <div
+            style={{ display: "flex", justifyContent: "center", width: "100%" }}
+          >
             <span>Already have an account? </span>
             <Link to="/">Login</Link>
           </div>
