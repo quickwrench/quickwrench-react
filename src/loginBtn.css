@@ -8,6 +8,7 @@ input {
   color: white;
   background-color: transparent;
   margin-bottom: 20px;
+  margin-right: 20px;
   border: 1px solid white;
   border-radius: 5px;
   padding-left: 20px;
@@ -29,4 +30,7 @@ button {
   background-color: white;
   color: #2148c0;
   width: 300px;
+}
+.op {
+  color: teal;
 }

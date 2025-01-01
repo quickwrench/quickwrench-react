@@ -3,6 +3,7 @@ import "./App.css";
 import "./LoginPage.jsx";
 import LoginPage from "./LoginPage.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import UserReg from "./UserReg.jsx";
 
 function App() {
   return (
@@ -11,8 +12,9 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route
           path="/profile"
-          element={<h1 style={{ color: "green" }}>profile page</h1>}
+          element={<h1 style={{ color: "white" }}>profile page</h1>}
         />
+        <Route path="/register" element={<UserReg />} />
       </Routes>
     </BrowserRouter>
   );

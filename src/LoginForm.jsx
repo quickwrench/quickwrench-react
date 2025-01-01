@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ErrorMessage from "./ErrorMessage.jsx";
 import "./loginBtn.css";
+import { Link } from "react-router-dom";
 export default function Login_form() {
+  // create states for the two input fields
   const [emailInput, setemailInput] = useState("");
   const [passInput, setPassInput] = useState("");
   const [error, setError] = useState(null);
@@ -80,7 +82,7 @@ export default function Login_form() {
           </form>
           <div style={{ marginTop: "10px" }}>
             <span>don`t have an account? </span>
-            <a href=""> sign up</a>
+            <Link to="/register">Sign Up</Link>
           </div>
         </div>
       </div>
