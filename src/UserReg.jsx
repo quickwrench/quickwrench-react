@@ -3,7 +3,7 @@ import { useState } from "react";
 import ErrorMessage from "./ErrorMessage.jsx";
 import "./loginBtn.css";
 import { Link } from "react-router-dom";
-import { NavigationBar } from "./NavigationBar.jsx";
+// import { NavigationBar } from "./NavigationBar.jsx";
 export default function UserReg() {
   // create states for the  input fields
 
@@ -85,7 +85,6 @@ export default function UserReg() {
 
   return (
     <>
-      <NavigationBar />
       <div
         className="register"
         style={{
