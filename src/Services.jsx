@@ -1,6 +1,25 @@
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import client from "./api/client"; // Assuming your API client is defined here
 
 export default function Services({ service, onChange }) {
+  const [categories, setCategories] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await client.get("workshops/categories/"); // Replace with the actual endpoint
+        setCategories(response.data); // Assuming `response.data` contains an array of category objects
+      } catch (err) {
+        setError("Failed to fetch categories.");
+        console.error("Error fetching service categories:", err);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
   return (
     <div style={{ display: "flex", flexWrap: "wrap", marginTop: "10px" }}>
       <input
@@ -18,9 +37,10 @@ export default function Services({ service, onChange }) {
       <input
         type="number"
         placeholder="Price"
-        value={service.price}
+        value={service.price || ""}
         onChange={(e) => onChange("price", e.target.value)}
       />
+
       <select
         value={service.category}
         onChange={(e) => onChange("category", e.target.value)}
@@ -36,14 +56,19 @@ export default function Services({ service, onChange }) {
         }}
       >
         <option value="">Select Service Type</option>
-        <option className="op">Engine & Performance</option>
-        <option className="op">Tires & Wheels</option>
-        <option className="op">Brakes & Suspension</option>
-        <option className="op">Battery & Electrical</option>
-        <option className="op">Transmission & Drivetrain</option>
-        <option className="op">Exterior & Bodywork</option>
-        <option className="op">Interior & Comfort</option>
+        {categories.length > 0 ? (
+          categories.map((category, index) => (
+            <option key={index} value={category.name} className="op">
+              {category.name}
+            </option>
+          ))
+        ) : (
+          <option disabled className="op">
+            No categories available
+          </option>
+        )}
       </select>
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 }

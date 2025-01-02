@@ -1,5 +1,5 @@
 import client from "./api/client.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ErrorMessage from "./ErrorMessage.jsx";
 import "./loginBtn.css";
 import { Link } from "react-router-dom";
@@ -18,7 +18,25 @@ export default function UserReg() {
     confirm_pass: "",
   });
   const [error, setError] = useState(null);
+  const [responseCar, setResponseCar] = useState([]);
+  useEffect(() => {
+    const fetchCarData = async () => {
+      try {
+        const response = await client.get("/carmakes/");
+        setResponseCar(response.data); // Assuming `response.data` contains the array of car makes
+      } catch (err) {
+        setError("Failed to fetch car makes.");
+        console.error("Error fetching car makes:", err);
+      }
+    };
 
+    fetchCarData();
+  }, []); // Empty dependency array to run only once on component mount
+
+  function getCarID(carName) {
+    const car = responseCar.data.find((car) => car.name === carName);
+    return car ? car.id : 1; // Return the car's id, or 1
+  }
   const handleReg = async (event) => {
     event.preventDefault();
     setError(null); // Reset error state
@@ -26,11 +44,6 @@ export default function UserReg() {
     const responseCar = await client.get("/carmakes/");
 
     console.log(responseCar);
-
-    function getCarID(carName) {
-      const car = responseCar.data.find((car) => car.name === carName);
-      return car ? car.id : 1; // Return the car's id, or 1
-    }
 
     try {
       // Check if passwords match before making the API call
@@ -169,18 +182,22 @@ export default function UserReg() {
               height: "45px",
               borderRadius: "5px",
               borderColor: "white",
-              placeholder: "Car Type",
             }}
           >
-            <option value="" className={"op"}>
+            <option value="" className="op">
               Select Car Type
             </option>
-            <option className={"op"}>Toyota</option>
-            <option className={"op"}>Honda</option>
-            <option className={"op"}>Ford</option>
-            <option className={"op"}>BMW</option>
-            <option className={"op"}>Mercedes</option>
+            {responseCar && responseCar.length > 0 ? (
+              responseCar.map((car, index) => (
+                <option key={index} value={car.name} className="op">
+                  {car.name}
+                </option>
+              ))
+            ) : (
+              <option disabled>No car types available</option>
+            )}
           </select>
+
           <input
             type="password"
             placeholder="Password"
