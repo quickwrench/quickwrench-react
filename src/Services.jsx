@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import client from "./api/client"; // Assuming your API client is defined here
+import client from "./api/client";
 
 export default function Services({ service, onChange }) {
   const [categories, setCategories] = useState([]);
@@ -9,8 +9,8 @@ export default function Services({ service, onChange }) {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await client.get("workshops/categories/"); // Replace with the actual endpoint
-        setCategories(response.data); // Assuming `response.data` contains an array of category objects
+        const response = await client.get("workshops/categories/");
+        setCategories(response.data); //    `response.data` contains an array of category objects
       } catch (err) {
         setError("Failed to fetch categories.");
         console.error("Error fetching service categories:", err);
@@ -55,7 +55,7 @@ export default function Services({ service, onChange }) {
           borderColor: "white",
         }}
       >
-        <option value="">Select Service Type</option>
+        <option value="">Service Category</option>
         {categories.length > 0 ? (
           categories.map((category, index) => (
             <option key={index} value={category.name} className="op">

@@ -1,19 +1,13 @@
 import client from "./api/client.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ErrorMessage from "./ErrorMessage.jsx";
-import "./loginBtn.css";
 import { Link } from "react-router-dom";
-// import { NavigationBar } from "./NavigationBar.jsx";
 import Services from "./Services.jsx";
+import "./loginBtn.css";
+
 export default function WorkShop() {
-  // create states for the  input fields
-  let responseService = null;
-  let responseCar = null;
-  const prepareData = async () => {
-    responseCar = await client.get("/carmakes/");
-    responseService = await client.get("/workshops/categories/");
-  };
-  prepareData();
+  const [responseCar, setResponseCar] = useState([]);
+  const [serviceCategories, setServiceCategories] = useState([]);
   const [formInputs, setFormInput] = useState({
     name: "",
     address: "",
@@ -26,17 +20,16 @@ export default function WorkShop() {
     category: 1,
   });
   const [error, setError] = useState(null);
-
   const [services, setServices] = useState([]); // Array to manage multiple components
 
-  function getCategoryID(Category) {
-    if (!responseService) return 0;
-    const category = responseService.data.find(
-      (serv) => serv.name === Category
-    );
-    console.log("here");
-    console.log(responseService);
+  function getCategoryID(categoryName) {
+    const category = serviceCategories.find((c) => c.name === categoryName);
     return category ? Number(category.id) : 1;
+  }
+
+  function getCarID(carName) {
+    const car = responseCar.find((car) => car.name === carName);
+    return car ? car.id : 1; // Return the car's id, or 1
   }
 
   const handleServiceChange = (id, field, value) => {
@@ -57,13 +50,6 @@ export default function WorkShop() {
   const handleReg = async (event) => {
     event.preventDefault();
     setError(null); // Reset error state
-
-    console.log(responseCar);
-
-    function getCarID(carName) {
-      const car = responseCar.data.find((car) => car.name === carName);
-      return car ? car.id : 1; // Return the car's id, or 1
-    }
 
     try {
       // Check if passwords match before making the API call
@@ -120,6 +106,23 @@ export default function WorkShop() {
       }
     }
   };
+
+  useEffect(() => {
+    const fetchCarData = async () => {
+      try {
+        const carmakesResponse = await client.get("/carmakes/");
+        const categoriesResponse = await client.get("/workshops/categories/");
+
+        setResponseCar(carmakesResponse.data); //    `response.data` contains the array of car makes
+        setServiceCategories(categoriesResponse.data);
+      } catch (err) {
+        setError("Failed to fetch car makes.");
+        console.error("Error fetching car makes:", err);
+      }
+    };
+
+    fetchCarData();
+  }, []); // Empty dependency array to run only once on component mount
 
   return (
     <>
@@ -204,17 +207,21 @@ export default function WorkShop() {
               height: "45px",
               borderRadius: "5px",
               borderColor: "white",
-              placeholder: "Car Type",
+              placeholder: "Car Make",
             }}
           >
             <option value="" className={"op"}>
-              Select Car Type
+              Car Make
             </option>
-            <option className={"op"}>Toyota</option>
-            <option className={"op"}>Honda</option>
-            <option className={"op"}>Ford</option>
-            <option className={"op"}>BMW</option>
-            <option className={"op"}>Mercedes</option>
+            {responseCar && responseCar.length > 0 ? (
+              responseCar.map((car, index) => (
+                <option key={index} value={car.name} className="op">
+                  {car.name}
+                </option>
+              ))
+            ) : (
+              <option disabled>No car makes available</option>
+            )}
           </select>
           <input
             type="password"

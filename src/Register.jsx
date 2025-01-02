@@ -4,7 +4,7 @@ import { NavigationBar } from "./NavigationBar.jsx";
 import { useState } from "react";
 
 export default function Register() {
-  const [activeTab, setActiveTab] = useState("Workshop");
+  const [activeTab, setActiveTab] = useState("User");
   return (
     <>
       <NavigationBar

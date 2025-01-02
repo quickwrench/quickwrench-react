@@ -3,10 +3,9 @@ import { useState, useEffect } from "react";
 import ErrorMessage from "./ErrorMessage.jsx";
 import "./loginBtn.css";
 import { Link } from "react-router-dom";
-// import { NavigationBar } from "./NavigationBar.jsx";
+
 export default function UserReg() {
   // create states for the  input fields
-
   const [formInputs, setFormInput] = useState({
     first_name: "",
     last_name: "",
@@ -23,7 +22,7 @@ export default function UserReg() {
     const fetchCarData = async () => {
       try {
         const response = await client.get("/carmakes/");
-        setResponseCar(response.data); // Assuming `response.data` contains the array of car makes
+        setResponseCar(response.data); //   `response.data` contains the array of car makes
       } catch (err) {
         setError("Failed to fetch car makes.");
         console.error("Error fetching car makes:", err);
@@ -34,7 +33,7 @@ export default function UserReg() {
   }, []); // Empty dependency array to run only once on component mount
 
   function getCarID(carName) {
-    const car = responseCar.data.find((car) => car.name === carName);
+    const car = responseCar.find((car) => car.name === carName);
     return car ? car.id : 1; // Return the car's id, or 1
   }
   const handleReg = async (event) => {
@@ -185,7 +184,7 @@ export default function UserReg() {
             }}
           >
             <option value="" className="op">
-              Select Car Type
+              Car Make
             </option>
             {responseCar && responseCar.length > 0 ? (
               responseCar.map((car, index) => (
@@ -194,7 +193,7 @@ export default function UserReg() {
                 </option>
               ))
             ) : (
-              <option disabled>No car types available</option>
+              <option disabled>No car makes available</option>
             )}
           </select>
 
