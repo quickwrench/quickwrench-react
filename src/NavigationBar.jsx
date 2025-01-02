@@ -1,11 +1,11 @@
-import { useState } from "react";
+// import { useState } from "react";
 
-export function NavigationBar() {
-  const [activeTab, setActiveTab] = useState("User"); // Default active tab
+export function NavigationBar(props) {
+  // const [activeTab, setActiveTab] = useState("Workshop"); // Default active tab
 
   const tabs = [
     { name: "User", href: "/register" },
-    { name: "Workshop", href: "/profile" },
+    { name: "Workshop", href: "/workshop" },
   ];
 
   return (
@@ -42,24 +42,24 @@ export function NavigationBar() {
         {tabs.map((tab) => (
           <a
             key={tab.name}
-            href={tab.href}
-            onClick={() => setActiveTab(tab.name)}
+            onClick={() => props.onChange(tab.name)}
             style={{
               textDecoration: "none",
-              color: activeTab === tab.name ? "#2c3e50" : "white", // Active tab text color
-              backgroundColor: activeTab === tab.name ? "white" : "transparent", // Active tab background color
+              color: props.active === tab.name ? "#2c3e50" : "white", // Active tab text color
+              backgroundColor:
+                props.active === tab.name ? "white" : "transparent", // Active tab background color
               fontSize: "1em",
-              fontWeight: activeTab === tab.name ? "bold" : "500", // Bold font for active tab
+              fontWeight: props.active === tab.name ? "bold" : "500", // Bold font for active tab
               padding: "8px 12px",
               borderRadius: "4px",
               transition: "background-color 0.3s, color 0.3s",
             }}
             onMouseEnter={(e) => {
-              if (activeTab !== tab.name)
+              if (props.active !== tab.name)
                 e.target.style.backgroundColor = "#34495e";
             }}
             onMouseLeave={(e) => {
-              if (activeTab !== tab.name)
+              if (props.active !== tab.name)
                 e.target.style.backgroundColor = "transparent";
             }}
           >

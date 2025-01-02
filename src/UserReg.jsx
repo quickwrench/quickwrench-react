@@ -1,12 +1,11 @@
 import client from "./api/client.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ErrorMessage from "./ErrorMessage.jsx";
 import "./loginBtn.css";
 import { Link } from "react-router-dom";
-import { NavigationBar } from "./NavigationBar.jsx";
+
 export default function UserReg() {
   // create states for the  input fields
-
   const [formInputs, setFormInput] = useState({
     first_name: "",
     last_name: "",
@@ -18,7 +17,25 @@ export default function UserReg() {
     confirm_pass: "",
   });
   const [error, setError] = useState(null);
+  const [responseCar, setResponseCar] = useState([]);
+  useEffect(() => {
+    const fetchCarData = async () => {
+      try {
+        const response = await client.get("/carmakes/");
+        setResponseCar(response.data); //   `response.data` contains the array of car makes
+      } catch (err) {
+        setError("Failed to fetch car makes.");
+        console.error("Error fetching car makes:", err);
+      }
+    };
 
+    fetchCarData();
+  }, []); // Empty dependency array to run only once on component mount
+
+  function getCarID(carName) {
+    const car = responseCar.find((car) => car.name === carName);
+    return car ? car.id : 1; // Return the car's id, or 1
+  }
   const handleReg = async (event) => {
     event.preventDefault();
     setError(null); // Reset error state
@@ -26,11 +43,6 @@ export default function UserReg() {
     const responseCar = await client.get("/carmakes/");
 
     console.log(responseCar);
-
-    function getCarID(carName) {
-      const car = responseCar.data.find((car) => car.name === carName);
-      return car ? car.id : 1; // Return the car's id, or 1
-    }
 
     try {
       // Check if passwords match before making the API call
@@ -85,7 +97,6 @@ export default function UserReg() {
 
   return (
     <>
-      <NavigationBar />
       <div
         className="register"
         style={{
@@ -111,7 +122,7 @@ export default function UserReg() {
         >
           <input
             type="text"
-            placeholder="FIRST NAME"
+            placeholder="First Name"
             value={formInputs.first_name}
             onChange={(event) => {
               // const newFormInput = {...formInputs}; //shallow copy, spread syntax
@@ -122,7 +133,7 @@ export default function UserReg() {
           />
           <input
             type="text"
-            placeholder="LAST NAME"
+            placeholder="Last Name"
             value={formInputs.last_name}
             onChange={(event) => {
               setFormInput({ ...formInputs, last_name: event.target.value });
@@ -130,7 +141,7 @@ export default function UserReg() {
           />
           <input
             type="email"
-            placeholder="EMAIL"
+            placeholder="Email"
             value={formInputs.email}
             onChange={(event) => {
               setFormInput({ ...formInputs, email: event.target.value });
@@ -138,7 +149,7 @@ export default function UserReg() {
           />
           <input
             type="text"
-            placeholder="USERNAME"
+            placeholder="Username"
             value={formInputs.username}
             onChange={(event) => {
               setFormInput({ ...formInputs, username: event.target.value });
@@ -147,7 +158,7 @@ export default function UserReg() {
 
           <input
             type="text"
-            placeholder="PHONE NUMBER"
+            placeholder="Phone Number"
             pattern="\+20[0-9]*"
             title="Phone number must start with +20"
             value={formInputs.phone_numbe}
@@ -170,21 +181,25 @@ export default function UserReg() {
               height: "45px",
               borderRadius: "5px",
               borderColor: "white",
-              placeholder: "CAR TYPE",
             }}
           >
-            <option value="" className={"op"}>
-              SELECT CAR TYPE
+            <option value="" className="op">
+              Car Make
             </option>
-            <option className={"op"}>Toyota</option>
-            <option className={"op"}>Honda</option>
-            <option className={"op"}>Ford</option>
-            <option className={"op"}>BMW</option>
-            <option className={"op"}>Mercedes</option>
+            {responseCar && responseCar.length > 0 ? (
+              responseCar.map((car, index) => (
+                <option key={index} value={car.name} className="op">
+                  {car.name}
+                </option>
+              ))
+            ) : (
+              <option disabled>No car makes available</option>
+            )}
           </select>
+
           <input
             type="password"
-            placeholder="PASSWORD"
+            placeholder="Password"
             value={formInputs.password}
             onChange={(event) => {
               setFormInput({ ...formInputs, password: event.target.value });
@@ -192,7 +207,7 @@ export default function UserReg() {
           />
           <input
             type="password"
-            placeholder="CONFIRM PASSWORD"
+            placeholder="Confirm Password"
             value={formInputs.confirm_pass}
             onChange={(event) => {
               setFormInput({ ...formInputs, confirm_pass: event.target.value });
