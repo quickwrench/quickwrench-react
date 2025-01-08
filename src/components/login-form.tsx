@@ -22,7 +22,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AxiosResponse } from "axios";
 import client from "@/api/client";
-import "./login-form.css";
 import { useState } from "react";
 
 // NOTE: form schema defines expected fields types and additional validations

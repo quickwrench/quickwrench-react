@@ -12,7 +12,7 @@ function ErrorAlert({ error }: ErrorAlertProps) {
 
   return (
     <Alert variant="destructive">
-      <div className="flex items-start gap-2">
+      <div className="flex items-start gap-1">
         <AlertCircle className="h-4" />
         <AlertTitle>{error}</AlertTitle>
       </div>
