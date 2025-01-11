@@ -1,4 +1,4 @@
-import LoginForm from "@/components/login-form";
+import LoginForm from "@/components/forms/login";
 import { ModeToggle } from "@/components/mode-toggle";
 
 function Login() {

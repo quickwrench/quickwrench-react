@@ -23,17 +23,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { AxiosResponse } from "axios";
 import client from "@/api/client";
 import { useState } from "react";
-
-// NOTE: form schema defines expected fields types and additional validations
-const formSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(1),
-});
+import { Link, NavigateFunction, useNavigate } from "react-router";
+import { loginSchema } from "@/api/schemas";
 
 function LoginForm() {
+  const navigate: NavigateFunction = useNavigate();
+
   // NOTE: states
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof loginSchema>>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -42,7 +40,7 @@ function LoginForm() {
   const [error, setError] = useState(null);
 
   // INFO: form submit handler
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof loginSchema>) {
     try {
       const response: AxiosResponse = await client.post(
         "/accounts/login/",
@@ -55,6 +53,7 @@ function LoginForm() {
       localStorage.setItem("refreshToken", json.refresh);
 
       setError(null);
+      navigate("/profile");
     } catch (err: unknown) {
       setError(err?.response?.data?.detail || "An unexpected error occurred");
     }
@@ -112,9 +111,9 @@ function LoginForm() {
               </Button>
               <div>
                 Don&apos;t have an account?{" "}
-                <a href="#signup" className="underline underline-offset-4">
+                <Link to="/register" className="underline underline-offset-4">
                   Sign up
-                </a>
+                </Link>
               </div>
             </CardFooter>
           </form>
