@@ -10,7 +10,7 @@ COPY package.json package-lock.json ./
 
 RUN npm ci
 
-COPY .env index.html vite.config.js ./
+COPY *.config.js tsconfig*.json components.json .env index.html ./
 
 COPY src/ ./src
 
